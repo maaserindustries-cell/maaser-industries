@@ -4,19 +4,238 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maaser Industries</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f1e8;
+      color: #14213d;
+    }
+
+    header {
+      padding: 24px;
+      background: #102820;
+      color: white;
+    }
+
+    .hero {
+      padding: 70px 24px;
+      background: linear-gradient(135deg, #102820, #1d3b34);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 650px;
+      color: #e8e0d0;
+    }
+
+    .tag {
+      color: #d8a24a;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 22px;
+      background: #0b6efd;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 48px 24px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+
+    .image {
+      height: 160px;
+      background: linear-gradient(135deg, #d8a24a, #102820);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #3d4a52;
+      line-height: 1.5;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .panel {
+      background: #fff;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.07);
+    }
+
+    footer {
+      padding: 28px;
+      background: #102820;
+      color: #e8e0d0;
+      text-align: center;
+    }
+
+    @media (min-width: 800px) {
+      .split {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Maaser Industries</h1>
-  <p>Building practical products, software, and ideas that make everyday life a little better.</p>
+  <header>
+    <strong>MAASER INDUSTRIES</strong>
+  </header>
 
-  <h2>Current Projects</h2>
-  <ul>
-    <li>Spot the Bot</li>
-    <li>FenceSaver</li>
-    <li>ManualMe</li>
-    <li>AIchitecture</li>
-  </ul>
+  <div class="hero">
+    <div class="tag">Design • Build • Invent</div>
+    <h1>Ideas become products.</h1>
+    <p>
+      Maaser Industries builds practical products, local media, custom spaces,
+      and useful tools that make everyday life a little better.
+    </p>
+    <a class="button" href="#projects">Explore Projects</a>
+  </div>
 
-  <p>Building in public. More coming soon.</p>
+  <section>
+    <div class="split">
+      <div class="panel">
+        <div class="tag">What we do</div>
+        <h2>Applied creativity.</h2>
+        <p>
+          We work across construction, product design, AI, media, and local commerce.
+          Different materials. Same mission: solve real problems with practical ideas.
+        </p>
+      </div>
+
+      <div class="panel">
+        <div class="tag">Building in public</div>
+        <h2>From sketch to launch.</h2>
+        <p>
+          Every project starts small: a conversation, a drawing, a prototype,
+          a test, and then something real people can use.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="tag">Featured projects</div>
+    <h2>Things we’re building.</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div class="image"></div>
+        <div class="card-content">
+          <h3>Ad Cards</h3>
+          <p>Local advertising cards that help restaurants, shops, and service businesses reach nearby customers.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image"></div>
+        <div class="card-content">
+          <h3>FenceSaver</h3>
+          <p>A cedar planter system designed to support aging fences while adding privacy and useful growing space.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image"></div>
+        <div class="card-content">
+          <h3>Architectural Craft</h3>
+          <p>Custom woodwork, tile, built-ins, outdoor spaces, and design/build solutions for difficult spaces.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image"></div>
+        <div class="card-content">
+          <h3>AI Boss</h3>
+          <p>Tools, media, and merchandise for people who want to use AI without becoming AI’s assistant.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image"></div>
+        <div class="card-content">
+          <h3>ManualMe</h3>
+          <p>Instruction manuals translated into clear, step-by-step explanations people can actually follow.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image"></div>
+        <div class="card-content">
+          <h3>Spot the Bot</h3>
+          <p>A game and learning tool for testing whether you can tell human writing from AI-generated content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="panel">
+      <div class="tag">The workshop</div>
+      <h2>One company. Many materials.</h2>
+      <p>
+        Wood, tile, print, software, AI, and local media are all materials.
+        Maaser Industries is the workshop where useful ideas are shaped into practical things.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    Maaser Industries • St. Augustine, Florida • Building in public
+  </footer>
 </body>
 </html>
