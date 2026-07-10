@@ -3,1198 +3,310 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Maaser Industries | Design • Build • Invent</title>
-
-  <meta
-    name="description"
-    content="Maaser Industries develops practical products, architectural craftsmanship, local media, software, and ideas that solve real problems."
-  >
-
+  <meta name="description" content="Maaser Industries develops practical products, custom spaces, local media, software, and ideas that solve real problems.">
   <style>
-    :root {
-      --navy: #102a43;
-      --blue: #0969b7;
-      --blue-dark: #07538f;
-      --green: #395d48;
-      --cream: #f5f0e7;
-      --paper: #fffdf8;
-      --wood: #b7824b;
-      --gold: #c99a53;
-      --ink: #17212b;
-      --muted: #5e6973;
-      --line: rgba(16, 42, 67, 0.14);
-      --shadow: 0 18px 45px rgba(30, 42, 50, 0.12);
-      --radius: 18px;
+    :root{
+      --navy:#102a43;--blue:#0969b7;--cream:#f5f0e7;--paper:#fffdf8;
+      --ink:#17212b;--muted:#5e6973;--line:rgba(16,42,67,.14);
+      --shadow:0 18px 45px rgba(30,42,50,.12);--radius:18px
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--ink);line-height:1.6;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       background:
-        linear-gradient(rgba(255,255,255,.82), rgba(255,255,255,.82)),
-        repeating-linear-gradient(
-          0deg,
-          transparent 0,
-          transparent 39px,
-          rgba(9,105,183,.055) 40px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent 0,
-          transparent 39px,
-          rgba(9,105,183,.055) 40px
-        ),
-        var(--cream);
-      color: var(--ink);
-      line-height: 1.6;
+        linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),
+        repeating-linear-gradient(0deg,transparent 0,transparent 39px,rgba(9,105,183,.05) 40px),
+        repeating-linear-gradient(90deg,transparent 0,transparent 39px,rgba(9,105,183,.05) 40px),
+        var(--cream)
     }
+    img{max-width:100%}
+    a{color:inherit}
+    .container{width:min(1180px,calc(100% - 36px));margin:auto}
 
-    Img {
-      max-width: 100%;
+    .site-header{
+      position:sticky;top:0;z-index:100;background:rgba(255,253,248,.94);
+      backdrop-filter:blur(14px);border-bottom:1px solid var(--line)
     }
-
-    a {
-      color: inherit;
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;color:var(--navy);text-decoration:none}
+    .brand-mark{width:42px;height:42px;display:grid;place-items:center;border:2px solid var(--navy);font-weight:900;font-size:22px}
+    .brand-text{line-height:1.05}
+    .brand-text strong{display:block;font-size:20px;letter-spacing:2px}
+    .brand-text span{display:block;margin-top:5px;font-size:11px;letter-spacing:5px}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-links a{text-decoration:none;text-transform:uppercase;font-weight:750;letter-spacing:.08em;font-size:12px;color:var(--navy)}
+    .nav-links a:hover{color:var(--blue)}
+    .nav-button,.button{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:7px;
+      text-decoration:none;font-weight:800;letter-spacing:.03em;
+      transition:transform .2s ease,box-shadow .2s ease
     }
+    .nav-button{padding:12px 18px;color:white;background:var(--blue);box-shadow:0 8px 20px rgba(9,105,183,.2)}
+    .nav-button:hover,.button:hover{transform:translateY(-2px)}
 
-    .container {
-      width: min(1180px, calc(100% - 36px));
-      margin: auto;
-    }
-
-    /* Navigation */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 253, 248, 0.93);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--navy);
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border: 2px solid var(--navy);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      font-size: 23px;
-      letter-spacing: -4px;
-    }
-
-    .brand-text {
-      line-height: 1.05;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 20px;
-      letter-spacing: 2px;
-    }
-
-    .brand-text span {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 5px;
-      margin-top: 5px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 750;
-      letter-spacing: .08em;
-      font-size: 12px;
-      color: var(--navy);
-    }
-
-    .nav-links a:hover {
-      color: var(--blue);
-    }
-
-    .nav-button,
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: .03em;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-
-    .nav-button {
-      padding: 12px 18px;
-      color: white !important;
-      background: var(--blue);
-      box-shadow: 0 8px 20px rgba(9, 105, 183, .2);
-    }
-
-    .nav-button:hover,
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    /* Hero */
-
-    .hero {
-      position: relative;
-      min-height: 680px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
+    .hero{
+      position:relative;min-height:680px;display:flex;align-items:center;overflow:hidden;
       background:
-        linear-gradient(
-          90deg,
-          rgba(247, 243, 234, .98) 0%,
-          rgba(247, 243, 234, .92) 38%,
-          rgba(247, 243, 234, .3) 67%,
-          rgba(247, 243, 234, .08) 100%
-        ),
-        url("images/Fifth%20beams_02.WEBP") center / cover no-repeat;
+        linear-gradient(90deg,rgba(247,243,234,.98) 0%,rgba(247,243,234,.92) 38%,rgba(247,243,234,.35) 67%,rgba(247,243,234,.08) 100%),
+        url("Images/Fifth%20beams_02.WEBP") center/cover no-repeat
     }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: .23;
-      pointer-events: none;
+    .hero::before{
+      content:"";position:absolute;inset:0;opacity:.22;pointer-events:none;
       background:
-        linear-gradient(115deg, transparent 46%, rgba(9,105,183,.18) 47%, transparent 48%),
-        linear-gradient(25deg, transparent 60%, rgba(9,105,183,.14) 61%, transparent 62%);
-      background-size: 220px 220px, 280px 280px;
+        linear-gradient(115deg,transparent 46%,rgba(9,105,183,.18) 47%,transparent 48%),
+        linear-gradient(25deg,transparent 60%,rgba(9,105,183,.14) 61%,transparent 62%);
+      background-size:220px 220px,280px 280px
     }
+    .hero-content{position:relative;z-index:2;width:min(660px,100%);padding:85px 0 100px}
+    .eyebrow,.small-label{color:var(--blue);text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:.18em}
+    .eyebrow{margin:0 0 18px;font-size:13px}
+    .hero h1{max-width:650px;margin:0;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:clamp(52px,8vw,92px);line-height:.95;letter-spacing:-.045em}
+    .hero-script{display:block;margin-top:18px;color:var(--blue);font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(36px,5vw,62px);font-weight:400;line-height:1.05;letter-spacing:0}
+    .hero-copy{max-width:610px;margin:30px 0 0;color:#344553;font-size:19px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+    .button{padding:15px 22px;color:white;background:var(--blue);box-shadow:0 10px 25px rgba(9,105,183,.22)}
+    .button.secondary{color:var(--navy);background:rgba(255,255,255,.8);border:1px solid rgba(16,42,67,.18);box-shadow:none}
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: min(660px, 100%);
-      padding: 85px 0 100px;
+    section{padding:84px 0}
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+    .section-heading h2{margin:5px 0 0;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,5vw,58px);line-height:1.05}
+    .section-heading p{max-width:510px;margin:0;color:var(--muted)}
+
+    .projects{background:rgba(255,253,248,.84);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .project-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+    .project-card{
+      grid-column:span 4;position:relative;overflow:hidden;min-height:390px;display:flex;flex-direction:column;
+      background:var(--paper);border:1px solid rgba(16,42,67,.12);border-radius:var(--radius);
+      box-shadow:0 12px 35px rgba(24,35,42,.08);transition:transform .25s ease,box-shadow .25s ease
     }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--blue);
-      text-transform: uppercase;
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .18em;
+    .project-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .project-card.wide{grid-column:span 6}
+    .project-image{width:100%;height:235px;display:block;object-fit:cover;background:#d9d5ca}
+    .project-content{padding:23px 23px 25px;display:flex;flex:1;flex-direction:column}
+    .project-content h3{margin:0 0 8px;color:var(--navy);font-size:23px;line-height:1.15}
+    .project-content p{margin:0;color:var(--muted)}
+    .project-link{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:19px;color:var(--blue);text-decoration:none;font-weight:800}
+    .placeholder-image{
+      height:235px;display:grid;place-items:center;padding:35px;color:white;text-align:center;
+      background:linear-gradient(135deg,rgba(9,105,183,.92),rgba(16,42,67,.98))
     }
-
-    .hero h1 {
-      margin: 0;
-      max-width: 650px;
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--navy);
-      font-size: clamp(52px, 8vw, 92px);
-      line-height: .95;
-      letter-spacing: -.045em;
-    }
-
-    .hero-script {
-      display: block;
-      margin-top: 18px;
-      color: var(--blue);
-      font-family: "Brush Script MT", "Segoe Script", cursive;
-      font-size: clamp(36px, 5vw, 62px);
-      font-weight: 400;
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    .hero-copy {
-      max-width: 610px;
-      margin: 30px 0 0;
-      color: #344553;
-      font-size: 19px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .button {
-      padding: 15px 22px;
-      background: var(--blue);
-      color: white;
-      box-shadow: 0 10px 25px rgba(9,105,183,.22);
-    }
-
-    .button.secondary {
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(16,42,67,.18);
-      color: var(--navy);
-      box-shadow: none;
-    }
-
-    /* General sections */
-
-    section {
-      padding: 84px 0;
-    }
-
-    .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 34px;
-    }
-
-    .section-heading h2 {
-      margin: 5px 0 0;
-      color: var(--navy);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(38px, 5vw, 58px);
-      line-height: 1.05;
-    }
-
-    .section-heading p {
-      max-width: 510px;
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .small-label {
-      color: var(--blue);
-      text-transform: uppercase;
-      font-weight: 900;
-      letter-spacing: .17em;
-      font-size: 12px;
-    }
-
-    /* Featured projects */
-
-    .projects {
-      background: rgba(255,253,248,.82);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 20px;
-    }
-
-    .project-card {
-      grid-column: span 4;
-      position: relative;
-      overflow: hidden;
-      min-height: 390px;
-      display: flex;
-      flex-direction: column;
-      background: var(--paper);
-      border: 1px solid rgba(16,42,67,.12);
-      border-radius: var(--radius);
-      box-shadow: 0 12px 35px rgba(24,35,42,.08);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .project-card.wide {
-      grid-column: span 6;
-    }
-
-    .project-Image {
-      width: 100%;
-      height: 235px;
-      display: block;
-      object-fit: cover;
-      background: #d9d5ca;
-    }
-
-    .project-content {
-      padding: 23px 23px 25px;
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-    }
-
-    .project-content h3 {
-      margin: 0 0 8px;
-      color: var(--navy);
-      font-size: 23px;
-      line-height: 1.15;
-    }
-
-    .project-content p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 19px;
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    .placeholder-Image {
-      height: 235px;
-      display: grid;
-      place-items: center;
-      padding: 35px;
-      background:
-        linear-gradient(135deg, rgba(9,105,183,.92), rgba(16,42,67,.98));
-      color: white;
-      text-align: center;
-    }
-
-    .placeholder-Image strong {
-      display: block;
-      font-size: 34px;
-      line-height: 1.05;
-    }
-
-    .placeholder-Image span {
-      display: block;
-      margin-top: 10px;
-      opacity: .76;
-    }
-
-    /* Selected work */
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 22px;
-    }
-
-    .work-large,
-    .work-small {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .work-large {
-      min-height: 650px;
-    }
-
-    .work-small {
-      min-height: 314px;
-    }
-
-    .work-stack {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .work-grid Img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .work-caption {
-      position: absolute;
-      inset: auto 0 0;
-      padding: 50px 24px 22px;
-      color: white;
-      background: linear-gradient(transparent, rgba(10,19,27,.9));
-    }
-
-    .work-caption h3 {
-      margin: 0 0 5px;
-      font-size: 25px;
-    }
-
-    .work-caption p {
-      margin: 0;
-      opacity: .86;
-    }
-
-    /* Process */
-
-    .process {
-      background: var(--navy);
-      color: white;
-    }
-
-    .process .small-label {
-      color: #86c5f4;
-    }
-
-    .process .section-heading h2 {
-      color: white;
-    }
-
-    .process .section-heading p {
-      color: rgba(255,255,255,.72);
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-    }
-
-    .process-step {
-      position: relative;
-      padding: 24px 20px;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 14px;
-      background: rgba(255,255,255,.055);
-    }
-
-    .step-number {
-      display: grid;
-      width: 44px;
-      height: 44px;
-      margin-bottom: 20px;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,.32);
-      border-radius: 50%;
-      color: #a8d8fb;
-      font-weight: 900;
-    }
-
-    .process-step h3 {
-      margin: 0 0 8px;
-      color: white;
-      font-size: 17px;
-    }
-
-    .process-step p {
-      margin: 0;
-      color: rgba(255,255,255,.7);
-      font-size: 14px;
-    }
-
-    /* Building in public */
-
-    .journal-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: stretch;
-      gap: 25px;
-    }
-
-    .journal-copy,
-    .journal-Image {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .journal-copy {
-      padding: 42px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-    }
-
-    .journal-copy h2 {
-      margin: 6px 0 18px;
-      color: var(--navy);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 45px;
-      line-height: 1.04;
-    }
-
-    .journal-copy p {
-      color: var(--muted);
-    }
-
-    .check-list {
-      display: grid;
-      gap: 13px;
-      margin: 25px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .check-list li {
-      position: relative;
-      padding-left: 31px;
-      font-weight: 650;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: grid;
-      place-items: center;
-      width: 21px;
-      height: 21px;
-      border-radius: 50%;
-      background: #5f8c45;
-      color: white;
-      font-size: 13px;
-    }
-
-    .journal-Image {
-      min-height: 470px;
-      position: relative;
-    }
-
-    .journal-Image Img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-    }
-
-    /* Footer */
-
-    footer {
-      padding: 52px 0 35px;
-      background: #0b1c2b;
-      color: rgba(255,255,255,.74);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 35px;
-    }
-
-    footer h3 {
-      color: white;
-      margin-top: 0;
-    }
-
-    footer a {
-      display: block;
-      margin: 8px 0;
-      color: rgba(255,255,255,.73);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: white;
-    }
-
-    .copyright {
-      margin-top: 35px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,.12);
-      font-size: 13px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 920px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        min-height: 720px;
-        align-items: end;
+    .placeholder-image strong{display:block;font-size:34px;line-height:1.05}
+    .placeholder-image span{display:block;margin-top:10px;opacity:.76}
+
+    .work-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    .work-large,.work-small{position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .work-large{min-height:650px}.work-small{min-height:314px}
+    .work-stack{display:grid;grid-template-rows:1fr 1fr;gap:22px}
+    .work-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .work-caption{position:absolute;inset:auto 0 0;padding:50px 24px 22px;color:white;background:linear-gradient(transparent,rgba(10,19,27,.9))}
+    .work-caption h3{margin:0 0 5px;font-size:25px}.work-caption p{margin:0;opacity:.86}
+
+    .process{color:white;background:var(--navy)}
+    .process .small-label{color:#86c5f4}.process .section-heading h2{color:white}.process .section-heading p{color:rgba(255,255,255,.72)}
+    .process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .process-step{padding:24px 20px;border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(255,255,255,.055)}
+    .step-number{width:44px;height:44px;display:grid;place-items:center;margin-bottom:20px;color:#a8d8fb;border:1px solid rgba(255,255,255,.32);border-radius:50%;font-weight:900}
+    .process-step h3{margin:0 0 8px;color:white;font-size:17px}.process-step p{margin:0;color:rgba(255,255,255,.7);font-size:14px}
+
+    .journal-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;gap:25px}
+    .journal-copy,.journal-image{overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .journal-copy{padding:42px;background:var(--paper);border:1px solid var(--line)}
+    .journal-copy h2{margin:6px 0 18px;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:45px;line-height:1.04}
+    .journal-copy p{color:var(--muted)}
+    .check-list{display:grid;gap:13px;margin:25px 0 0;padding:0;list-style:none}
+    .check-list li{position:relative;padding-left:31px;font-weight:650}
+    .check-list li::before{content:"✓";position:absolute;left:0;top:0;width:21px;height:21px;display:grid;place-items:center;color:white;background:#5f8c45;border-radius:50%;font-size:13px}
+    .journal-image{position:relative;min-height:470px}
+    .journal-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+    footer{padding:52px 0 35px;color:rgba(255,255,255,.74);background:#0b1c2b}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px}
+    footer h3{margin-top:0;color:white}
+    footer a{display:block;margin:8px 0;color:rgba(255,255,255,.73);text-decoration:none}
+    footer a:hover{color:white}
+    .copyright{margin-top:35px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:13px}
+
+    @media (max-width:920px){
+      .nav-links{display:none}
+      .hero{
+        min-height:720px;align-items:end;
         background:
-          linear-gradient(
-            0deg,
-            rgba(247,243,234,.98) 0%,
-            rgba(247,243,234,.91) 45%,
-            rgba(247,243,234,.25) 100%
-          ),
-          url("images/Fifth%20beams_02.WEBP") center / cover no-repeat;
+          linear-gradient(0deg,rgba(247,243,234,.98) 0%,rgba(247,243,234,.91) 45%,rgba(247,243,234,.25) 100%),
+          url("Images/Fifth%20beams_02.WEBP") center/cover no-repeat
       }
-
-      .hero-content {
-        padding: 300px 0 70px;
-      }
-
-      .project-card,
-      .project-card.wide {
-        grid-column: span 6;
-      }
-
-      .work-grid,
-      .journal-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .work-large {
-        min-height: 530px;
-      }
-
-      .process-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .hero-content{padding:300px 0 70px}
+      .project-card,.project-card.wide{grid-column:span 6}
+      .work-grid,.journal-grid{grid-template-columns:1fr}
+      .work-large{min-height:530px}
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
     }
-
-    @media (max-width: 610px) {
-      .container {
-        width: min(100% - 26px, 1180px);
-      }
-
-      .brand-text strong {
-        font-size: 16px;
-      }
-
-      .brand-text span {
-        font-size: 9px;
-      }
-
-      .nav-button {
-        padding: 10px 12px;
-        font-size: 11px;
-      }
-
-      .hero {
-        min-height: 670px;
-      }
-
-      .hero-content {
-        padding: 260px 0 55px;
-      }
-
-      .hero-copy {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 62px 0;
-      }
-
-      .section-heading {
-        display: block;
-      }
-
-      .section-heading p {
-        margin-top: 15px;
-      }
-
-      .project-card,
-      .project-card.wide {
-        grid-column: 1 / -1;
-      }
-
-      .project-Image,
-      .placeholder-image {
-        height: 225px;
-      }
-
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .journal-copy {
-        padding: 28px 22px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width:610px){
+      .container{width:min(100% - 26px,1180px)}
+      .brand-text strong{font-size:16px}.brand-text span{font-size:9px}
+      .nav-button{padding:10px 12px;font-size:11px}
+      .hero{min-height:670px}.hero-content{padding:260px 0 55px}.hero-copy{font-size:16px}
+      section{padding:62px 0}
+      .section-heading{display:block}.section-heading p{margin-top:15px}
+      .project-card,.project-card.wide{grid-column:1/-1}
+      .project-image,.placeholder-image{height:225px}
+      .process-grid{grid-template-columns:1fr}
+      .journal-copy{padding:28px 22px}
+      .footer-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
-
 <body>
-
-  <header class="site-header">
-    <div class="container nav">
-
-      <a class="brand" href="#">
-        <div class="brand-mark">MI</div>
-
-        <div class="brand-text">
-          <strong>MAASER</strong>
-          <span>INDUSTRIES</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#work">Selected Work</a>
-        <a href="#process">Process</a>
-        <a href="#journal">Build Journal</a>
-      </nav>
-
-      <a class="nav-button" href="#projects">
-        Explore Projects →
-      </a>
-
-    </div>
-  </header>
-
-
-  <main>
-
-    <section class="hero">
-      <div class="container">
-
-        <div class="hero-content">
-          <p class="eyebrow">Design • Build • Invent</p>
-
-          <h1>
-            Ideas become products.
-            <span class="hero-script">Products improve lives.</span>
-          </h1>
-
-          <p class="hero-copy">
-            Maaser Industries develops practical products, custom spaces,
-            local media, software, and ideas that solve real problems.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button" href="#projects">
-              Explore Our Projects →
-            </a>
-
-            <a class="button secondary" href="#work">
-              See What We Build
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <section class="projects" id="projects">
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <span class="small-label">Featured Projects</span>
-            <h2>Things we’re building.</h2>
-          </div>
-
-          <p>
-            Different materials. Different industries. One shared purpose:
-            making useful ideas tangible.
-          </p>
-        </div>
-
-        <div class="project-grid">
-
-          <article class="project-card wide">
-            <div class="placeholder-image">
-              <div>
-                <strong>Ad Cards</strong>
-                <span>Local advertising where people actually sit.</span>
-              </div>
-            </div>
-
-            <div class="project-content">
-              <h3>Local Ad Cards</h3>
-
-              <p>
-                Shared local mailers and restaurant cards that give businesses
-                category-exclusive advertising at an accessible price.
-              </p>
-
-              <a class="project-link" href="#">
-                Explore Ad Cards →
-              </a>
-            </div>
-          </article>
-
-
-          <article class="project-card wide">
-            <img
-              class="project-image"
-              src="images/FenceSaver%20perspective%20.jpeg"
-              alt="FenceSaver cedar planter and fence support system"
-            >
-
-            <div class="project-content">
-              <h3>FenceSaver</h3>
-
-              <p>
-                A cedar planter and structural support system designed to
-                strengthen aging fences while adding privacy and garden space.
-              </p>
-
-              <a class="project-link" href="#">
-                Explore FenceSaver →
-              </a>
-            </div>
-          </article>
-
-
-          <article class="project-card">
-            <Img
-              class="project-image"
-              src="images/Maroni%20library_03.JPG"
-              alt="Custom built-in library cabinetry"
-            >
-
-            <div class="project-content">
-              <h3>Architectural Craft</h3>
-
-              <p>
-                Built-ins, millwork, tile, custom fabrication, and
-                design/build solutions for difficult spaces.
-              </p>
-
-              <a class="project-link" href="#work">
-                See Selected Work →
-              </a>
-            </div>
-          </article>
-
-
-          <article class="project-card">
-            <Img
-              class="project-image"
-              src="images/Zemel_01.JPG"
-              alt="Custom architectural interior woodworking"
-            >
-
-            <div class="project-content">
-              <h3>Custom Spaces</h3>
-
-              <p>
-                Thoughtfully designed interiors shaped around how people
-                actually live, work, and move through a space.
-              </p>
-
-              <a class="project-link" href="#work">
-                View Craftsmanship →
-              </a>
-            </div>
-          </article>
-
-
-          <article class="project-card">
-            <div class="placeholder-image">
-              <div>
-                <strong>AI Boss</strong>
-                <span>Be AI Boss. Not AI Bot.</span>
-              </div>
-            </div>
-
-            <div class="project-content">
-              <h3>AI Boss</h3>
-
-              <p>
-                Tools, ideas, education, and merchandise for people who want
-                to use AI deliberately rather than be directed by it.
-              </p>
-
-              <a class="project-link" href="#">
-                Explore AI Boss →
-              </a>
-            </div>
-          </article>
-
-
-          <article class="project-card">
-            <div class="placeholder-image">
-              <div>
-                <strong>ManualMe</strong>
-                <span>Instructions that finally make sense.</span>
-              </div>
-            </div>
-
-            <div class="project-content">
-              <h3>ManualMe</h3>
-
-              <p>
-                Visual product manuals translated into clear written
-                instructions that ordinary people can actually follow.
-              </p>
-
-              <a class="project-link" href="#">
-                Follow Development →
-              </a>
-            </div>
-          </article>
-
-
-          <article class="project-card">
-            <div class="placeholder-image">
-              <div>
-                <strong>Spot the Bot</strong>
-                <span>Can you tell AI from humans?</span>
-              </div>
-            </div>
-
-            <div class="project-content">
-              <h3>Spot the Bot</h3>
-
-              <p>
-                A game and learning experience designed to sharpen AI literacy
-                through human-versus-machine identification challenges.
-              </p>
-
-              <a class="project-link" href="#">
-                Coming Soon →
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-
-    <section id="work">
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <span class="small-label">Selected Work</span>
-            <h2>Design made tangible.</h2>
-          </div>
-
-          <p>
-            These projects demonstrate the same process behind every Maaser
-            product: understand the problem, design the solution, and build it well.
-          </p>
-        </div>
-
-        <div class="work-grid">
-
-          <article class="work-large">
-            <Img
-              src="images/Fifth%20bath_02.WEBP"
-              alt="Custom luxury bathroom"
-            >
-
-            <div class="work-caption">
-              <h3>Custom Architectural Remodeling</h3>
-              <p>
-                Materials, geometry, craftsmanship, and function considered together.
-              </p>
-            </div>
-          </article>
-
-
-          <div class="work-stack">
-
-            <article class="work-small">
-              <Img
-                src="images/Cabinet%20stair_01.WEBP"
-                alt="Custom staircase with integrated cabinetry"
-              >
-
-              <div class="work-caption">
-                <h3>Built-In Solutions</h3>
-                <p>Storage and architecture designed as one system.</p>
-              </div>
-            </article>
-
-
-            <article class="work-small">
-              <Img
-                src="images/Zemel_02.JPG"
-                alt="Custom woodworking and architectural details"
-              >
-
-              <div class="work-caption">
-                <h3>Furniture-Grade Craft</h3>
-                <p>Details that could not simply be purchased.</p>
-              </div>
-            </article>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <section class="process" id="process">
-      <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <span class="small-label">Our Process</span>
-            <h2>Conversation precedes creation.</h2>
-          </div>
-
-          <p>
-            Useful things begin by understanding the real problem before deciding
-            what should be built.
-          </p>
-        </div>
-
-        <div class="process-grid">
-
-          <article class="process-step">
-            <div class="step-number">01</div>
-            <h3>Conversation</h3>
-            <p>
-              We begin with questions, observations, and the actual needs of the user.
-            </p>
-          </article>
-
-          <article class="process-step">
-            <div class="step-number">02</div>
-            <h3>Design</h3>
-            <p>
-              The idea becomes a sketch, model, plan, workflow, or prototype.
-            </p>
-          </article>
-
-          <article class="process-step">
-            <div class="step-number">03</div>
-            <h3>Build</h3>
-            <p>
-              We choose the right materials and transform the concept into reality.
-            </p>
-          </article>
-
-          <article class="process-step">
-            <div class="step-number">04</div>
-            <h3>Test</h3>
-            <p>
-              Real-world use reveals what works, what does not, and what should improve.
-            </p>
-          </article>
-
-          <article class="process-step">
-            <div class="step-number">05</div>
-            <h3>Launch</h3>
-            <p>
-              The finished idea becomes something useful, repeatable, and scalable.
-            </p>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <section id="journal">
-      <div class="container">
-
-        <div class="journal-grid">
-
-          <div class="journal-copy">
-            <span class="small-label">Building in Public</span>
-
-            <h2>Follow the work from idea to launch.</h2>
-
-            <p>
-              Maaser Industries documents the process—not only the finished
-              result. Sketches, experiments, prototypes, failures, refinements,
-              and field tests are part of the story.
-            </p>
-
-            <ul class="check-list">
-              <li>Local mailer validation underway</li>
-              <li>Physical products in development</li>
-              <li>New software concepts being prototyped</li>
-              <li>Architectural projects built in the real world</li>
-            </ul>
-
-            <div class="hero-actions">
-              <a class="button" href="#">
-                Follow the Journey →
-              </a>
-            </div>
-          </div>
-
-
-          <div class="journal-image">
-            <Img
-              src="images/Fifth%20up%20bath_02.WEBP"
-              alt="Maaser Industries project in progress"
-            >
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-
-  <footer>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="#">
+      <div class="brand-mark">M</div>
+      <div class="brand-text"><strong>MAASER</strong><span>INDUSTRIES</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#">Home</a><a href="#projects">Projects</a><a href="#work">Selected Work</a>
+      <a href="#process">Process</a><a href="#journal">Build Journal</a>
+    </nav>
+    <a class="nav-button" href="#projects">Explore Projects →</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
     <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-          <h3>Maaser Industries</h3>
-
-          <p>
-            A workshop for practical innovation.<br>
-            Ideas. Prototypes. Products. Better lives.
-          </p>
+      <div class="hero-content">
+        <p class="eyebrow">Design • Build • Invent</p>
+        <h1>Ideas become products.<span class="hero-script">Products improve lives.</span></h1>
+        <p class="hero-copy">Maaser Industries develops practical products, custom spaces, local media, software, and ideas that solve real problems.</p>
+        <div class="hero-actions">
+          <a class="button" href="#projects">Explore Our Projects →</a>
+          <a class="button secondary" href="#work">See What We Build</a>
         </div>
-
-        <div>
-          <h3>Explore</h3>
-          <a href="#projects">Projects</a>
-          <a href="#work">Selected Work</a>
-          <a href="#process">Our Process</a>
-          <a href="#journal">Build Journal</a>
-        </div>
-
-        <div>
-          <h3>Location</h3>
-          <p>St. Augustine, Florida</p>
-          <p>Physical products, local media, construction, and software.</p>
-        </div>
-
       </div>
-
-      <div class="copyright">
-        © 2026 Maaser Industries. Built in public.
-      </div>
-
     </div>
-  </footer>
+  </section>
 
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <div><span class="small-label">Featured Projects</span><h2>Things we’re building.</h2></div>
+        <p>Different materials. Different industries. One shared purpose: making useful ideas tangible.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card wide">
+          <div class="placeholder-image"><div><strong>Ad Cards</strong><span>Local advertising where people actually sit.</span></div></div>
+          <div class="project-content"><h3>Local Ad Cards</h3><p>Shared local mailers and restaurant cards that give businesses category-exclusive advertising at an accessible price.</p><a class="project-link" href="#">Explore Ad Cards →</a></div>
+        </article>
+
+        <article class="project-card wide">
+          <img class="project-image" src="Images/FenceSaver%20perspective%20.jpeg" alt="FenceSaver cedar planter and fence support system">
+          <div class="project-content"><h3>FenceSaver</h3><p>A cedar planter and structural support system designed to strengthen aging fences while adding privacy and garden space.</p><a class="project-link" href="#">Explore FenceSaver →</a></div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="Images/Maroni%20library_03.JPG" alt="Custom built-in library cabinetry">
+          <div class="project-content"><h3>Architectural Craft</h3><p>Built-ins, millwork, tile, custom fabrication, and design/build solutions for difficult spaces.</p><a class="project-link" href="#work">See Selected Work →</a></div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="Images/Zemel_01.JPG" alt="Custom architectural interior woodworking">
+          <div class="project-content"><h3>Custom Spaces</h3><p>Thoughtfully designed interiors shaped around how people actually live, work, and move through a space.</p><a class="project-link" href="#work">View Craftsmanship →</a></div>
+        </article>
+
+        <article class="project-card">
+          <div class="placeholder-image"><div><strong>AI Boss</strong><span>Be AI Boss. Not AI Bot.</span></div></div>
+          <div class="project-content"><h3>AI Boss</h3><p>Tools, ideas, education, and merchandise for people who want to use AI deliberately rather than be directed by it.</p><a class="project-link" href="#">Explore AI Boss →</a></div>
+        </article>
+
+        <article class="project-card">
+          <div class="placeholder-image"><div><strong>ManualMe</strong><span>Instructions that finally make sense.</span></div></div>
+          <div class="project-content"><h3>ManualMe</h3><p>Visual product manuals translated into clear written instructions that ordinary people can actually follow.</p><a class="project-link" href="#">Follow Development →</a></div>
+        </article>
+
+        <article class="project-card">
+          <div class="placeholder-image"><div><strong>Spot the Bot</strong><span>Can you tell AI from humans?</span></div></div>
+          <div class="project-content"><h3>Spot the Bot</h3><p>A game and learning experience designed to sharpen AI literacy through human-versus-machine identification challenges.</p><a class="project-link" href="#">Coming Soon →</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="section-heading">
+        <div><span class="small-label">Selected Work</span><h2>Design made tangible.</h2></div>
+        <p>These projects demonstrate the same process behind every Maaser product: understand the problem, design the solution, and build it well.</p>
+      </div>
+      <div class="work-grid">
+        <article class="work-large">
+          <img src="Images/Fifth%20bath_02.WEBP" alt="Custom luxury bathroom">
+          <div class="work-caption"><h3>Custom Architectural Remodeling</h3><p>Materials, geometry, craftsmanship, and function considered together.</p></div>
+        </article>
+        <div class="work-stack">
+          <article class="work-small">
+            <img src="Images/Cabinet%20stair_01.WEBP" alt="Custom staircase with integrated cabinetry">
+            <div class="work-caption"><h3>Built-In Solutions</h3><p>Storage and architecture designed as one system.</p></div>
+          </article>
+          <article class="work-small">
+            <img src="Images/Zemel_02.JPG" alt="Custom woodworking and architectural details">
+            <div class="work-caption"><h3>Furniture-Grade Craft</h3><p>Details that could not simply be purchased.</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-heading">
+        <div><span class="small-label">Our Process</span><h2>Conversation precedes creation.</h2></div>
+        <p>Useful things begin by understanding the real problem before deciding what should be built.</p>
+      </div>
+      <div class="process-grid">
+        <article class="process-step"><div class="step-number">01</div><h3>Conversation</h3><p>We begin with questions, observations, and the actual needs of the user.</p></article>
+        <article class="process-step"><div class="step-number">02</div><h3>Design</h3><p>The idea becomes a sketch, model, plan, workflow, or prototype.</p></article>
+        <article class="process-step"><div class="step-number">03</div><h3>Build</h3><p>We choose the right materials and transform the concept into reality.</p></article>
+        <article class="process-step"><div class="step-number">04</div><h3>Test</h3><p>Real-world use reveals what works, what does not, and what should improve.</p></article>
+        <article class="process-step"><div class="step-number">05</div><h3>Launch</h3><p>The finished idea becomes something useful, repeatable, and scalable.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="journal">
+    <div class="container">
+      <div class="journal-grid">
+        <div class="journal-copy">
+          <span class="small-label">Building in Public</span>
+          <h2>Follow the work from idea to launch.</h2>
+          <p>Maaser Industries documents the process—not only the finished result. Sketches, experiments, prototypes, failures, refinements, and field tests are part of the story.</p>
+          <ul class="check-list">
+            <li>Local mailer validation underway</li>
+            <li>Physical products in development</li>
+            <li>New software concepts being prototyped</li>
+            <li>Architectural projects built in the real world</li>
+          </ul>
+          <div class="hero-actions"><a class="button" href="#">Follow the Journey →</a></div>
+        </div>
+        <div class="journal-image">
+          <img src="Images/Fifth%20up%20bath_02.WEBP" alt="Maaser Industries project in progress">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><h3>Maaser Industries</h3><p>A workshop for practical innovation.<br>Ideas. Prototypes. Products. Better lives.</p></div>
+      <div><h3>Explore</h3><a href="#projects">Projects</a><a href="#work">Selected Work</a><a href="#process">Our Process</a><a href="#journal">Build Journal</a></div>
+      <div><h3>Location</h3><p>St. Augustine, Florida</p><p>Physical products, local media, construction, and software.</p></div>
+    </div>
+    <div class="copyright">© 2026 Maaser Industries. Built in public.</div>
+  </div>
+</footer>
 </body>
 </html>
