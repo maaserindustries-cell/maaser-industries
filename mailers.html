@@ -1,1 +1,900 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Local Ad Cards | Maaser Industries</title>
+  <meta name="description" content="Choose a city, campaign, category, and ad placement for a shared local advertising card.">
 
+  <style>
+    :root{
+      --navy:#102a43;
+      --blue:#0969b7;
+      --blue-dark:#07538f;
+      --cream:#f5f0e7;
+      --paper:#fffdf8;
+      --ink:#17212b;
+      --muted:#5e6973;
+      --line:rgba(16,42,67,.14);
+      --shadow:0 18px 45px rgba(30,42,50,.12);
+      --radius:18px;
+      --green:#278a4b;
+      --yellow:#f0bd3f;
+      --gray:#d7dce2;
+      --red:#9f3f3f;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      line-height:1.6;
+      background:
+        linear-gradient(rgba(255,255,255,.84),rgba(255,255,255,.84)),
+        repeating-linear-gradient(0deg,transparent 0,transparent 39px,rgba(9,105,183,.05) 40px),
+        repeating-linear-gradient(90deg,transparent 0,transparent 39px,rgba(9,105,183,.05) 40px),
+        var(--cream);
+    }
+
+    a{color:inherit}
+    img{max-width:100%}
+    .container{width:min(1180px,calc(100% - 36px));margin:auto}
+
+    .site-header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,253,248,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:12px;
+      text-decoration:none;color:var(--navy);
+    }
+
+    .brand-mark{
+      width:42px;height:42px;
+      border:2px solid var(--navy);
+      display:grid;place-items:center;
+      font-weight:900;font-size:23px;
+    }
+
+    .brand-text{line-height:1.05}
+    .brand-text strong{display:block;font-size:20px;letter-spacing:2px}
+    .brand-text span{display:block;font-size:11px;letter-spacing:5px;margin-top:5px}
+
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{
+      text-decoration:none;text-transform:uppercase;
+      font-weight:800;letter-spacing:.08em;font-size:12px;color:var(--navy)
+    }
+
+    .button{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:14px 20px;border:0;border-radius:8px;
+      text-decoration:none;font-weight:850;letter-spacing:.02em;
+      background:var(--blue);color:#fff;cursor:pointer;
+      box-shadow:0 10px 24px rgba(9,105,183,.2);
+      transition:.2s ease;
+    }
+    .button:hover{transform:translateY(-2px);background:var(--blue-dark)}
+    .button.secondary{
+      background:#fff;color:var(--navy);
+      border:1px solid var(--line);box-shadow:none;
+    }
+
+    .eyebrow,.small-label{
+      color:var(--blue);
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:.17em;
+      font-size:12px;
+    }
+
+    .hero{
+      padding:76px 0 58px;
+      background:linear-gradient(135deg,#f8f3e8,#fff 52%,#eaf4fb);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      align-items:center;
+      gap:38px;
+    }
+
+    .hero h1{
+      margin:10px 0 18px;
+      color:var(--navy);
+      font:700 clamp(48px,7vw,78px)/.97 Georgia,"Times New Roman",serif;
+      letter-spacing:-.04em;
+    }
+
+    .hero p{
+      max-width:650px;
+      margin:0;
+      color:#344553;
+      font-size:19px;
+    }
+
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+    .hero-photo{
+      overflow:hidden;border:1px solid var(--line);
+      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);
+    }
+    .hero-photo img{display:block;width:100%;min-height:420px;object-fit:cover}
+
+    .stat-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:14px;margin-top:28px;
+    }
+    .stat-card{
+      padding:17px;border:1px solid var(--line);
+      border-radius:13px;background:rgba(255,255,255,.82);
+    }
+    .stat-card strong{display:block;color:var(--navy);font-size:23px;line-height:1.1}
+
+    section{padding:78px 0}
+    .alt{background:rgba(255,253,248,.87);border-block:1px solid var(--line)}
+
+    .section-heading{
+      display:flex;justify-content:space-between;align-items:end;
+      gap:28px;margin-bottom:34px;
+    }
+    .section-heading h2{
+      margin:5px 0 0;color:var(--navy);
+      font:700 clamp(38px,5vw,58px)/1.05 Georgia,"Times New Roman",serif;
+    }
+    .section-heading p{max-width:520px;margin:0;color:var(--muted)}
+
+    .location-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+    }
+
+    .location-card{
+      position:relative;
+      padding:26px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:0 12px 30px rgba(24,35,42,.08);
+    }
+
+    .location-card.active{border:2px solid var(--blue)}
+    .location-card h3{margin:5px 0 8px;color:var(--navy);font-size:24px}
+    .location-card p{margin:0 0 18px;color:var(--muted)}
+    .status{
+      display:inline-flex;align-items:center;gap:7px;
+      font-size:12px;font-weight:900;text-transform:uppercase;
+    }
+    .status::before{content:"";width:10px;height:10px;border-radius:50%}
+    .status.live{color:var(--green)}
+    .status.live::before{background:var(--green)}
+    .status.soon{color:#9a7010}
+    .status.soon::before{background:var(--yellow)}
+
+    .campaign-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+    }
+
+    .campaign-card{
+      overflow:hidden;border:1px solid var(--line);
+      border-radius:var(--radius);background:#fff;
+      box-shadow:0 12px 30px rgba(24,35,42,.08);
+    }
+
+    .campaign-card img{
+      width:100%;height:220px;object-fit:cover;display:block;background:#f2eee5;
+    }
+
+    .campaign-copy{padding:22px}
+    .campaign-copy h3{margin:0 0 8px;color:var(--navy);font-size:23px}
+    .campaign-meta{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;
+      margin:18px 0;
+    }
+    .campaign-meta div{
+      padding:12px;border-radius:10px;background:#f5f8fb;
+      border:1px solid var(--line);font-size:14px;
+    }
+    .campaign-meta strong{display:block;color:var(--navy)}
+
+    .progress{
+      height:10px;border-radius:999px;background:#e7ebef;overflow:hidden;margin:14px 0 7px;
+    }
+    .progress span{display:block;height:100%;background:var(--blue);width:50%}
+
+    .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .gallery-card{
+      overflow:hidden;border-radius:var(--radius);
+      border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);
+    }
+    .gallery-card img{width:100%;height:430px;object-fit:contain;background:#f8f5ee;display:block}
+    .gallery-card p{margin:0;padding:18px 20px;color:var(--muted);font-weight:700}
+
+    .seat-layout{
+      display:grid;grid-template-columns:.8fr 1.2fr;
+      gap:28px;align-items:start;
+    }
+
+    .legend{display:flex;flex-wrap:wrap;gap:15px;margin:20px 0}
+    .legend span{display:flex;align-items:center;gap:8px;font-weight:750}
+    .legend-dot{width:13px;height:13px;border-radius:50%}
+    .legend-dot.available{background:var(--green)}
+    .legend-dot.selected{background:var(--yellow)}
+    .legend-dot.reserved{background:var(--gray)}
+
+    .seat-map{
+      padding:24px;border:1px solid var(--line);
+      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);
+    }
+
+    .seat-map-header{display:flex;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .seat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+    .seat{
+      appearance:none;min-height:100px;padding:15px 11px;
+      border-radius:12px;border:2px solid transparent;
+      background:#edf8f1;color:var(--ink);text-align:left;
+      cursor:pointer;transition:.18s ease;
+    }
+    .seat:hover{transform:translateY(-2px)}
+    .seat.premium{grid-column:span 2;min-height:125px}
+    .seat.reserved{background:#eef0f2;color:#737b84;cursor:not-allowed}
+    .seat.selected{border-color:#b87d00;background:#fff5cf}
+    .seat strong,.seat small,.seat b{display:block}
+    .seat small{margin-top:6px;color:var(--muted)}
+    .seat b{margin-top:10px;color:var(--blue)}
+
+    .selection-panel{
+      margin-top:18px;padding:20px;border-radius:14px;
+      border:1px solid var(--line);background:#f5f8fb;
+    }
+    .selection-panel h3{margin:0 0 7px;color:var(--navy)}
+    .selection-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:16px}
+    .qr-image{width:92px;height:92px;object-fit:contain;padding:5px;border:1px solid var(--line);background:#fff}
+
+    .map-layout{
+      display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;
+    }
+    .route-map{
+      overflow:hidden;border:1px solid var(--line);
+      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);
+    }
+    .route-map img{display:block;width:100%;min-height:410px;object-fit:cover}
+
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .price-card{
+      padding:30px;border-radius:var(--radius);
+      border:1px solid var(--line);background:#fff;
+      box-shadow:0 12px 30px rgba(24,35,42,.08);
+    }
+    .price-card.featured{border:2px solid var(--blue);transform:translateY(-6px)}
+    .price-card h3{margin:0;color:var(--navy);font-size:24px}
+    .price{margin:12px 0 16px;color:var(--blue);font:700 42px/1 Georgia,"Times New Roman",serif}
+    .price-card ul{padding-left:20px;color:var(--muted)}
+    .checkout-row{display:flex;align-items:center;gap:14px;margin-top:20px}
+    .checkout-row .button{flex:1}
+
+    .intake-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .intake-card{
+      padding:28px;border:1px solid var(--line);
+      border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);
+    }
+    .intake-card h3{margin-top:0;color:var(--navy);font-size:25px}
+    .intake-list{display:grid;gap:12px;padding:0;list-style:none}
+    .intake-list li{padding:12px 14px;border-radius:10px;background:#f5f8fb;border:1px solid var(--line)}
+
+    .faq details{
+      margin-bottom:12px;padding:17px 18px;border-radius:12px;
+      border:1px solid var(--line);background:#fff;
+    }
+    .faq summary{cursor:pointer;color:var(--navy);font-weight:850}
+
+    .publisher-cta{
+      display:flex;justify-content:space-between;align-items:center;gap:25px;
+      padding:34px;border-radius:var(--radius);
+      background:linear-gradient(135deg,var(--navy),#184d74);color:#fff;
+    }
+    .publisher-cta h2{
+      margin:0;color:#fff;
+      font:700 clamp(32px,5vw,50px)/1.05 Georgia,"Times New Roman",serif;
+    }
+
+    footer{
+      padding:52px 0 35px;background:#0b1c2b;color:rgba(255,255,255,.74);
+    }
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px}
+    footer h3{color:#fff;margin-top:0}
+    footer a{display:block;margin:8px 0;color:rgba(255,255,255,.74);text-decoration:none}
+
+    @media(max-width:920px){
+      .nav-links{display:none}
+      .hero-grid,.seat-layout,.map-layout,.gallery-grid,.intake-grid{grid-template-columns:1fr}
+      .location-grid,.campaign-grid,.pricing-grid{grid-template-columns:1fr}
+      .price-card.featured{transform:none}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:610px){
+      .container{width:min(100% - 26px,1180px)}
+      .brand-text strong{font-size:16px}
+      .brand-text span{font-size:9px}
+      .button{padding:12px 15px;font-size:13px}
+      .stat-grid{grid-template-columns:1fr}
+      .seat-grid{grid-template-columns:repeat(2,1fr)}
+      .seat.premium{grid-column:span 2}
+      .gallery-card img{height:290px}
+      .publisher-cta{display:block}
+      .publisher-cta .button{margin-top:18px}
+      .footer-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        <strong>MAASER</strong>
+        <span>INDUSTRIES</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalogue</a>
+      <a href="custom-work.html">Workshop</a>
+      <a href="mailers.html">Ad Cards</a>
+      <a href="aiboss.html">AI Boss</a>
+    </nav>
+
+    <a class="button" href="#locations">Choose a Location →</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Self-Service Local Advertising</span>
+      <h1>Choose a city. Choose a campaign. Choose your spot.</h1>
+      <p>
+        Local Ad Cards makes shared direct mail easy to buy. Select a market,
+        inspect the route, choose an available placement, reserve your category,
+        and submit your ad materials online.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href="#locations">Browse Locations →</a>
+        <a class="button secondary" href="#how-it-works">How It Works</a>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><strong>1</strong>Active pilot market</div>
+        <div class="stat-card"><strong>7,500+</strong>Target households</div>
+        <div class="stat-card"><strong>Nationwide</strong>Expansion model</div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img src="Images/ad-card-photo.jpg" alt="Printed local advertising card">
+    </div>
+  </div>
+</section>
+
+<section id="locations">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="small-label">Locations</span>
+        <h2>Start with your market.</h2>
+      </div>
+      <p>
+        Each location contains its own campaigns, routes, dates, available placements,
+        and category inventory.
+      </p>
+    </div>
+
+    <div class="location-grid">
+      <article class="location-card active">
+        <span class="status live">Live</span>
+        <h3>St. Augustine</h3>
+        <p>Current pilot location with restaurant and local-business campaigns.</p>
+        <a class="button" href="#campaigns">View Campaigns →</a>
+      </article>
+
+      <article class="location-card">
+        <span class="status soon">Coming Soon</span>
+        <h3>Jacksonville</h3>
+        <p>Join the interest list for the first Jacksonville campaign.</p>
+        <a class="button secondary" href="mailto:nsmolino@gmail.com?subject=Jacksonville%20Ad%20Cards%20Waitlist">Join Waitlist</a>
+      </article>
+
+      <article class="location-card">
+        <span class="status soon">Coming Soon</span>
+        <h3>Orlando</h3>
+        <p>Register interest as an advertiser or future city operator.</p>
+        <a class="button secondary" href="mailto:nsmolino@gmail.com?subject=Orlando%20Ad%20Cards%20Interest">Register Interest</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="campaigns">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="small-label">St. Augustine Campaigns</span>
+        <h2>Choose the audience you want to reach.</h2>
+      </div>
+      <p>
+        The first campaign is active. Additional campaign types can be added without
+        redesigning the page.
+      </p>
+    </div>
+
+    <div class="campaign-grid">
+      <article class="campaign-card">
+        <img src="Images/ad-card-front.jpg" alt="Restaurant Deals campaign card">
+        <div class="campaign-copy">
+          <span class="status live">Open</span>
+          <h3>Restaurant Deals</h3>
+          <p>Dining offers for residents across the St. Augustine area.</p>
+
+          <div class="campaign-meta">
+            <div><strong>7,500+</strong>Households</div>
+            <div><strong>July 31</strong>Target mailing</div>
+            <div><strong>8 of 16</strong>Available</div>
+            <div><strong>3 levels</strong>Placement types</div>
+          </div>
+
+          <div class="progress"><span style="width:50%"></span></div>
+          <small>50% of positions reserved</small>
+
+          <div class="hero-actions">
+            <a class="button" href="#seat-map">Choose a Position →</a>
+            <a class="button secondary" href="#card-preview">Preview Card</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="campaign-card">
+        <img src="Images/ad-route-map.jpg" alt="St. Augustine service area">
+        <div class="campaign-copy">
+          <span class="status soon">Planned</span>
+          <h3>Home Services</h3>
+          <p>Contractors, maintenance providers, and household service businesses.</p>
+          <div class="campaign-meta">
+            <div><strong>St. Augustine</strong>Market</div>
+            <div><strong>Waitlist</strong>Status</div>
+          </div>
+          <a class="button secondary" href="mailto:nsmolino@gmail.com?subject=Home%20Services%20Ad%20Card%20Waitlist">Join Waitlist</a>
+        </div>
+      </article>
+
+      <article class="campaign-card">
+        <img src="Images/ad-card-back.jpg" alt="Local shopping advertising card">
+        <div class="campaign-copy">
+          <span class="status soon">Planned</span>
+          <h3>Local Shopping</h3>
+          <p>Retail, boutiques, markets, salons, and other local destinations.</p>
+          <div class="campaign-meta">
+            <div><strong>St. Augustine</strong>Market</div>
+            <div><strong>Waitlist</strong>Status</div>
+          </div>
+          <a class="button secondary" href="mailto:nsmolino@gmail.com?subject=Local%20Shopping%20Ad%20Card%20Waitlist">Join Waitlist</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="card-preview">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="small-label">Current Card</span>
+        <h2>Inspect the campaign before you reserve.</h2>
+      </div>
+      <p>Tap either side to open the full-size image.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <article class="gallery-card">
+        <a href="Images/ad-card-front.jpg" target="_blank" rel="noopener">
+          <img src="Images/ad-card-front.jpg" alt="Front of restaurant advertising card">
+        </a>
+        <p>Front side — premium feature positions and campaign identity.</p>
+      </article>
+
+      <article class="gallery-card">
+        <a href="Images/ad-card-back.jpg" target="_blank" rel="noopener">
+          <img src="Images/ad-card-back.jpg" alt="Back of restaurant advertising card">
+        </a>
+        <p>Back side — standard placements and micro mentions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="seat-map">
+  <div class="container seat-layout">
+    <div>
+      <span class="small-label">Interactive Seat Map</span>
+      <h2 style="font:700 48px/1.02 Georgia,'Times New Roman',serif;color:var(--navy);margin:8px 0 15px">
+        Choose your place on the card.
+      </h2>
+      <p>
+        Green positions are available. Gray positions are reserved. Tap a position
+        to see the price and matching checkout option.
+      </p>
+
+      <div class="legend">
+        <span><i class="legend-dot available"></i>Available</span>
+        <span><i class="legend-dot selected"></i>Selected</span>
+        <span><i class="legend-dot reserved"></i>Reserved</span>
+      </div>
+
+      <p>
+        This pilot uses manual availability. The same interface can later connect to
+        live inventory and prevent double booking automatically.
+      </p>
+    </div>
+
+    <div class="seat-map">
+      <div class="seat-map-header">
+        <strong>Restaurant Deals — Current Campaign</strong>
+        <span>St. Augustine</span>
+      </div>
+
+      <div class="seat-grid">
+        <button class="seat premium"
+          data-name="Premium Front A"
+          data-price="$199"
+          data-link="https://buy.stripe.com/REPLACE_FRONT_LINK"
+          data-qr="Images/stripe-front-qr.png">
+          <strong>Premium Front A</strong>
+          <small>Large feature position</small>
+          <b>$199</b>
+        </button>
+
+        <button class="seat premium reserved" disabled>
+          <strong>Premium Front B</strong>
+          <small>Reserved</small>
+        </button>
+
+        <button class="seat"
+          data-name="Standard Back 1"
+          data-price="$149"
+          data-link="https://buy.stripe.com/REPLACE_BACK_LINK"
+          data-qr="Images/stripe-back-qr.png">
+          <strong>Back 1</strong>
+          <small>Standard position</small>
+          <b>$149</b>
+        </button>
+
+        <button class="seat"
+          data-name="Standard Back 2"
+          data-price="$149"
+          data-link="https://buy.stripe.com/REPLACE_BACK_LINK"
+          data-qr="Images/stripe-back-qr.png">
+          <strong>Back 2</strong>
+          <small>Standard position</small>
+          <b>$149</b>
+        </button>
+
+        <button class="seat reserved" disabled>
+          <strong>Back 3</strong>
+          <small>Reserved</small>
+        </button>
+
+        <button class="seat"
+          data-name="Standard Back 4"
+          data-price="$149"
+          data-link="https://buy.stripe.com/REPLACE_BACK_LINK"
+          data-qr="Images/stripe-back-qr.png">
+          <strong>Back 4</strong>
+          <small>Standard position</small>
+          <b>$149</b>
+        </button>
+
+        <button class="seat"
+          data-name="Micro Mention 1"
+          data-price="$25"
+          data-link="https://buy.stripe.com/REPLACE_MICRO_LINK"
+          data-qr="Images/stripe-micro-qr.png">
+          <strong>Micro 1</strong>
+          <small>Compact listing</small>
+          <b>$25</b>
+        </button>
+
+        <button class="seat"
+          data-name="Micro Mention 2"
+          data-price="$25"
+          data-link="https://buy.stripe.com/REPLACE_MICRO_LINK"
+          data-qr="Images/stripe-micro-qr.png">
+          <strong>Micro 2</strong>
+          <small>Compact listing</small>
+          <b>$25</b>
+        </button>
+
+        <button class="seat reserved" disabled>
+          <strong>Micro 3</strong>
+          <small>Reserved</small>
+        </button>
+
+        <button class="seat"
+          data-name="Micro Mention 4"
+          data-price="$25"
+          data-link="https://buy.stripe.com/REPLACE_MICRO_LINK"
+          data-qr="Images/stripe-micro-qr.png">
+          <strong>Micro 4</strong>
+          <small>Compact listing</small>
+          <b>$25</b>
+        </button>
+      </div>
+
+      <div class="selection-panel">
+        <h3 id="selection-title">Select an available position</h3>
+        <p id="selection-copy">Checkout details will appear here.</p>
+
+        <div class="selection-actions" id="selection-actions" hidden>
+          <a class="button" id="selection-link" href="#" target="_blank" rel="noopener">
+            Reserve with Stripe →
+          </a>
+
+          <img class="qr-image" id="selection-qr"
+            src="Images/stripe-front-qr.png"
+            alt="Stripe payment QR code">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container map-layout">
+    <div class="route-map">
+      <img src="Images/ad-route-map.jpg" alt="St. Augustine advertising service area map">
+    </div>
+
+    <div>
+      <span class="small-label">Campaign Route</span>
+      <h2 style="font:700 48px/1.02 Georgia,'Times New Roman',serif;color:var(--navy);margin:8px 0 15px">
+        Reach the neighborhoods your business actually serves.
+      </h2>
+      <p>
+        The current pilot covers the St. Augustine area. Future campaigns can be
+        organized by city, ZIP code, route, household count, and mailing date.
+      </p>
+
+      <div class="stat-grid">
+        <div class="stat-card"><strong>32080</strong>Beach area</div>
+        <div class="stat-card"><strong>32084</strong>City area</div>
+        <div class="stat-card"><strong>32086</strong>South area</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="pricing">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="small-label">Pricing + Checkout</span>
+        <h2>Click or scan to reserve.</h2>
+      </div>
+      <p>
+        Each button and QR code should lead to the same Stripe Checkout page.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      <article class="price-card featured">
+        <span class="small-label">Highest Visibility</span>
+        <h3>Premium Front</h3>
+        <div class="price">$199</div>
+        <ul>
+          <li>Large front placement</li>
+          <li>Category exclusivity</li>
+          <li>Offer, contact details, website, and QR</li>
+          <li>Layout assistance included</li>
+        </ul>
+        <div class="checkout-row">
+          <a class="button" href="https://buy.stripe.com/REPLACE_FRONT_LINK" target="_blank" rel="noopener">Reserve →</a>
+          <img class="qr-image" src="Images/stripe-front-qr.png" alt="Premium Front payment QR code">
+        </div>
+      </article>
+
+      <article class="price-card">
+        <span class="small-label">Standard Feature</span>
+        <h3>Standard Back</h3>
+        <div class="price">$149</div>
+        <ul>
+          <li>Full standard ad panel</li>
+          <li>Category exclusivity</li>
+          <li>Offer and contact details</li>
+          <li>Layout assistance included</li>
+        </ul>
+        <div class="checkout-row">
+          <a class="button" href="https://buy.stripe.com/REPLACE_BACK_LINK" target="_blank" rel="noopener">Reserve →</a>
+          <img class="qr-image" src="Images/stripe-back-qr.png" alt="Standard Back payment QR code">
+        </div>
+      </article>
+
+      <article class="price-card">
+        <span class="small-label">Entry Placement</span>
+        <h3>Micro Mention</h3>
+        <div class="price">$25</div>
+        <ul>
+          <li>Business name and category</li>
+          <li>Website or phone number</li>
+          <li>Compact local visibility</li>
+          <li>Category exclusivity</li>
+        </ul>
+        <div class="checkout-row">
+          <a class="button" href="https://buy.stripe.com/REPLACE_MICRO_LINK" target="_blank" rel="noopener">Reserve →</a>
+          <img class="qr-image" src="Images/stripe-micro-qr.png" alt="Micro Mention payment QR code">
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="small-label">Self-Service Workflow</span>
+        <h2>Reserve now. Submit materials next.</h2>
+      </div>
+      <p>
+        This first version handles discovery and reservation. The next layer adds
+        accounts, uploads, proofs, and live campaign status.
+      </p>
+    </div>
+
+    <div class="intake-grid">
+      <article class="intake-card">
+        <h3>Current customer flow</h3>
+        <ul class="intake-list">
+          <li>1. Choose a location</li>
+          <li>2. Choose a campaign</li>
+          <li>3. Select a position</li>
+          <li>4. Pay with Stripe</li>
+          <li>5. Submit logo, offer, and contact details</li>
+          <li>6. Approve the proof</li>
+        </ul>
+      </article>
+
+      <article class="intake-card">
+        <h3>Planned SaaS automation</h3>
+        <ul class="intake-list">
+          <li>Live city and campaign inventory</li>
+          <li>Automatic category conflict checking</li>
+          <li>Customer accounts and file uploads</li>
+          <li>AI-assisted copy and design guidance</li>
+          <li>Proof approval and campaign tracking</li>
+          <li>Publisher dashboard for new cities</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt faq">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="small-label">FAQ</span>
+        <h2>Before you reserve.</h2>
+      </div>
+    </div>
+
+    <details>
+      <summary>What does category-exclusive mean?</summary>
+      <p>Only one participating business from a defined category appears on that specific card.</p>
+    </details>
+
+    <details>
+      <summary>Do I need finished artwork?</summary>
+      <p>No. You can provide your logo, offer, contact details, and preferred imagery. Design assistance can be included.</p>
+    </details>
+
+    <details>
+      <summary>What happens if my category is already taken?</summary>
+      <p>You can choose another campaign, reserve a future mailing, or request a transfer or refund if a conflict was not caught before checkout.</p>
+    </details>
+
+    <details>
+      <summary>Can this expand to other cities?</summary>
+      <p>Yes. The location and campaign structure is designed so additional markets can be added without rebuilding the entire page.</p>
+    </details>
+
+    <details>
+      <summary>Will AI help build the ad?</summary>
+      <p>The planned self-service platform will provide expert and AI-assisted recommendations for offers, copy, images, and layout.</p>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="container publisher-cta">
+    <div>
+      <span class="small-label" style="color:#8fd0ff">Future Network</span>
+      <h2>Want to bring Local Ad Cards to your city?</h2>
+      <p>Publisher and city-operator opportunities will become part of the nationwide platform.</p>
+    </div>
+
+    <a class="button" href="mailto:nsmolino@gmail.com?subject=Local%20Ad%20Cards%20City%20Publisher">
+      Become a Publisher →
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h3>Maaser Industries</h3>
+      <p>A workshop for practical innovation.<br>Ideas. Prototypes. Products. Better lives.</p>
+    </div>
+
+    <div>
+      <h3>Explore</h3>
+      <a href="catalog.html">Catalogue</a>
+      <a href="custom-work.html">Workshop</a>
+      <a href="mailers.html">Ad Cards</a>
+      <a href="aiboss.html">AI Boss</a>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>St. Augustine, Florida</p>
+      <a href="mailto:nsmolino@gmail.com">nsmolino@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const seats = document.querySelectorAll(".seat:not(.reserved)");
+  const title = document.getElementById("selection-title");
+  const copy = document.getElementById("selection-copy");
+  const actions = document.getElementById("selection-actions");
+  const link = document.getElementById("selection-link");
+  const qr = document.getElementById("selection-qr");
+
+  seats.forEach((seat) => {
+    seat.addEventListener("click", () => {
+      seats.forEach((item) => item.classList.remove("selected"));
+      seat.classList.add("selected");
+
+      title.textContent = `${seat.dataset.name} — ${seat.dataset.price}`;
+      copy.textContent =
+        "Category-exclusive placement with design coordination and direct Stripe checkout.";
+
+      link.href = seat.dataset.link;
+      qr.src = seat.dataset.qr;
+      actions.hidden = false;
+    });
+  });
+</script>
+
+</body>
+</html>
